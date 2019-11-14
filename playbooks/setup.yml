@@ -1,0 +1,40 @@
+# Creates and updates the necessary servers in Hetzner Cloud for the project to
+# run.
+#
+# Note this requires hcloud-python >= 1.0.0 and the appropriate API token for
+# the project.
+---
+- hosts: donalo # hosts: localhost so we avoid connection?
+  connection: local
+  vars:
+    servers:
+      - name: db
+        server_type: cx21
+        image: ubuntu-18.04
+        state: present
+      - name: app
+        server_type: cx21
+        image: ubuntu-18.04
+        state: present
+  tasks:
+  - name: Add sysadmins ssh keys to project
+    hcloud_ssh_key:
+      name: pau
+      public_key: "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDMHITZ3YiNL5Z7COs21slvTCRBApUlOUacIYBsRXAvlcQUPN5i+euw/UVEkxecJjH9iIwHrBoEpReRkql6knGy1/tpUxmbk0YHE88tff61QWVPCf9T5Z6v5z9/4uiRvHySS0/6b3aGvwz2MVnLE5ORSV+0ubyHUMoMbGLV1Sjl0NXnih+MEtbJOpB+fKrcDdbGhUZXobvj4Km5EAQm4p6zPQF6C/bbeXZ1hLBaGtIDC9NaPzWFgeh4Wu9wx1Pwrx5WUeuOpes02YyMwkCVtlqsLt3gLCd/KFMTrNF8RgAuQEkUfdJ4LWc84A8FLrnaYR8ExaNVfRHNxDHdB55cImsF"
+      state: present
+      api_token: "{{ hetzner_api_token }}"
+
+  - name: Create servers
+    hcloud_server:
+      name: "{{ item.name }}"
+      server_type: "{{ item.server_type }}"
+      image: "{{ item.image }}"
+      state: "{{ item.state }}"
+      ssh_keys:
+        - pau
+      api_token: "{{ hetzner_api_token }}"
+    with_items: "{{ servers }}"
+    register: "hetzner_hosts"
+
+  - debug:
+      var: hetzner_hosts
