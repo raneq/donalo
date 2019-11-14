@@ -1,0 +1,14 @@
+# Creates and updates the necessary servers in Hetzner Cloud for the project to
+# run.
+#
+# Note this requires hcloud-python >= 1.0.0 and the appropriate API token for
+# the project.
+---
+- name: Add sysadmins SSH keys to project
+  hcloud_ssh_key:
+    name: "{{ item.name }}"
+    public_key: "{{ lookup('file', item.ssh_key) }}"
+    state: "{{ item.state }}"
+    api_token: "{{ hetzner_api_token }}"
+  when: item.state == "present"
+  with_items: "{{ sys_admins }}"

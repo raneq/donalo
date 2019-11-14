@@ -2,7 +2,7 @@
 donalo.local
 
 [staging]
-localhost
+staging.donalo.org
 
 [donalo:children]
 staging
