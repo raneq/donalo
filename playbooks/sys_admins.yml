@@ -15,4 +15,3 @@
       become: yes
       vars:
         sys_admin_group: sysadmin
-
