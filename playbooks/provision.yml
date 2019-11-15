@@ -1,0 +1,7 @@
+---
+- hosts: donalo
+  become: yes
+  roles:
+    - role: vendor/geerlingguy.security
+      vars:
+        security_autoupdate_enabled: true
