@@ -1,0 +1,10 @@
+---
+development_user: "{{ lookup('env', 'USER') }}"
+
+sys_admins:
+  - name: donalo
+    ssh_key: "~/.ssh/id_rsa.pub"
+    state: present
+  - name: "{{ development_user }}"
+    ssh_key: "~/.ssh/id_rsa.pub"
+    state: present
