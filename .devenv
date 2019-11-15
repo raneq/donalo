@@ -1,0 +1,13 @@
+NAME="donalo"
+DISTRIBUTION="ubuntu"
+RELEASE="bionic"
+ARCH="amd64"
+HOST="$NAME.local"
+
+PROJECT_NAME="donalo"
+PROJECT_PATH="${PWD%/*}/$PROJECT_NAME"
+
+DEVENV_USER="donalo"
+DEVENV_GROUP="donalo"
+
+PYTHON_INTERPRETER="python3"
