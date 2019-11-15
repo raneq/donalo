@@ -1,0 +1,4 @@
+timeoverflow ALL=(ALL) NOPASSWD: /bin/systemctl start {{ app_user }}
+timeoverflow ALL=(ALL) NOPASSWD: /bin/systemctl stop {{ app_user }}
+timeoverflow ALL=(ALL) NOPASSWD: /bin/systemctl restart {{ app_user }}
+timeoverflow ALL=(ALL) NOPASSWD: /bin/systemctl reload {{ app_user }}

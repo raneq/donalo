@@ -1,0 +1,5 @@
+---
+- name: Create `{{ app_user }}` group
+  group:
+    name: "{{ app_user }}"
+    state: present

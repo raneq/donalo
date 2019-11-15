@@ -1,0 +1,35 @@
+---
+- name: Create `{{ app_user }}` user
+  user:
+    name: "{{ app_user }}"
+    groups: "{{ app_user }}"
+    group: "{{ app_user }}"
+    append: yes
+    state: present
+    shell: /bin/bash
+
+- name: Load environment variables in bashrc for `{{ app_user }}` user
+  blockinfile:
+    path: "/home/{{ app_user }}/.bashrc"
+    insertbefore: BOF
+    block: |
+      set -a
+      [ -f /etc/default/{{ app_user }} ] && . /etc/default/{{ app_user }}
+      set +a
+
+- name: Create sudoers for `{{ app_user }}` user
+  template:
+    dest: "/etc/sudoers.d/{{ app_user }}"
+    mode: 0440
+    owner: root
+    group: root
+    src: "sudoers.{{ app_user }}"
+    validate: "/usr/sbin/visudo -cf %s"
+
+- name: Add system administrator SSH public keys to `{{ app_user }}` user
+  authorized_key:
+    user: "{{ app_user }}"
+    key: "{{ lookup('file', item.ssh_key) }}"
+    state: "{{ item.state }}"
+  when: item.state == "present"
+  with_items: "{{ sys_admins }}"

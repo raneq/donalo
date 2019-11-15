@@ -7,3 +7,5 @@
         security_autoupdate_enabled: true
     - role: webserver
       tags: webserver
+    - role: common
+      tags: common
