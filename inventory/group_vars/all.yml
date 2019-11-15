@@ -1,6 +1,10 @@
 ---
 ansible_python_interpreter: /usr/bin/python3
 
-deploy_to:  "/var/www/donalo"
-shared_path: "{{ deploy_to }}/shared"
-unicorn_socket: "{{ shared_path }}/sockets/unicorn.donalo.sock"
+app_user: "donalo"
+
+# This path is temporal and will make use of `ansistrano_deploy_to` and
+# `shared_path` once we adopt Ansistrano for deployments
+unicorn_socket: "/var/www/donalo/shared/sockets/unicorn.donalo.sock"
+
+ruby_version: "{{ lookup('file', '../.ruby-version') }}"

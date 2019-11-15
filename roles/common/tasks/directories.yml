@@ -1,0 +1,8 @@
+---
+- name: "Create /var/www/{{ app_user }} directory"
+  file:
+    path: "/var/www/{{ app_user }}"
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 02775
+    state: directory
