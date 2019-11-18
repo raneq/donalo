@@ -12,3 +12,17 @@
     api_token: "{{ hetzner_api_token }}"
   when: item.state == "present"
   with_items: "{{ sys_admins }}"
+
+- name: Create servers
+  hcloud_server:
+    name: "{{ item.name }}"
+    server_type: "{{ item.server_type }}"
+    image: "{{ item.image }}"
+    location: "{{ item.location }}"
+    state: "{{ item.state }}"
+    api_token: "{{ hetzner_api_token }}"
+  with_items: "{{ servers }}"
+  register: "hetzner_servers"
+
+- debug:
+    var: hetzner_servers
