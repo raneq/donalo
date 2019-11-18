@@ -1,0 +1,13 @@
+---
+ansible_python_interpreter: "{{ lookup('pipe','pyenv which python') }}"
+
+sys_admins:
+  - name: enrico
+    ssh_key: "../pub_keys/enrico.pub"
+    state: present
+  - name: daniel
+    ssh_key: "../pub_keys/dani.pub"
+    state: present
+  - name: pau
+    ssh_key: "../pub_keys/pau.pub"
+    state: present

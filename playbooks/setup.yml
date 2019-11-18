@@ -1,0 +1,10 @@
+# Creates and updates the necessary servers in Hetzner Cloud for the project to
+# run.
+#
+# Note this requires hcloud-python >= 1.0.0 and the appropriate API token for
+# the project.
+---
+- hosts: donalo
+  connection: local
+  roles:
+    - role: infrastructure
