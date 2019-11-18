@@ -11,3 +11,10 @@ sys_admins:
   - name: pau
     ssh_key: "../pub_keys/pau.pub"
     state: present
+
+servers:
+  - name: "{{ inventory_hostname }}"
+    server_type: cx21
+    image: ubuntu-18.04
+    location: nbg1
+    state: present
