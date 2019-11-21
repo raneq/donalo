@@ -5,9 +5,17 @@ jobs:
       - image: circleci/python:3.7.4-stretch
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - v1-python-deps-{{ checksum "requirements.txt" }}
+            - v1-python-deps-
       - run:
           name: Install dependencies
           command: pip3 install -r requirements.txt --user
+      - save_cache:
+          key: v1-python-deps-{{ checksum "requirements.txt" }}
+          paths:
+            - "~/circleci/.cache/pip"
       - run:
           name: Ansible-lint playbooks
           command: ansible-lint playbooks/*.yml
