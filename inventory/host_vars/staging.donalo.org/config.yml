@@ -18,3 +18,6 @@ servers:
     image: ubuntu-18.04
     location: nbg1
     state: present
+
+# Let's Encrypt conf
+certificate_authority_email: "info@coopdevs.org"
