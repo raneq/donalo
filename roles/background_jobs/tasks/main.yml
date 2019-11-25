@@ -1,0 +1,11 @@
+---
+- name: Create systemd unit for Delayed Job
+  template:
+    src: delayed_job.service.j2
+    dest: /etc/systemd/system/delayed_job.service
+    mode: 0644
+
+- name: Start the delayed_job service on boot
+  service:
+    name: delayed_job
+    enabled: yes
