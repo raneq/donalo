@@ -13,3 +13,5 @@
       tags: background_jobs
     - role: database
       tags: database
+    - role: cacheserver
+      tags: cacheserver
