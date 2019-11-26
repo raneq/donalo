@@ -1,9 +1,9 @@
 [dev]
 donalo.local
 
-[staging]
-staging.donalo.org ansible_host=78.47.203.39
+[next]
+next.donalo.org ansible_host=78.47.203.39
 
 [donalo:children]
-staging
+next
 dev
