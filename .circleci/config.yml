@@ -5,6 +5,9 @@ jobs:
       - image: circleci/python:3.7.4-stretch
     steps:
       - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: |
+          sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - restore_cache:
           keys:
             - v2-python-deps-{{ checksum "requirements.txt" }}
@@ -29,6 +32,9 @@ jobs:
       - image: circleci/python:3.7.4-stretch
     steps:
       - checkout
+      - run: sudo chown -R circleci:circleci /usr/local/bin
+      - run: |
+          sudo chown -R circleci:circleci /usr/local/lib/python3.7/site-packages
       - restore_cache:
           keys:
             - v2-python-deps-{{ checksum "requirements.txt" }}
