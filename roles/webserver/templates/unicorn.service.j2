@@ -1,0 +1,17 @@
+[Unit]
+Description=Donalo Unicorn app server
+
+[Service]
+Type=simple
+SyslogIdentifier=donalo-unicorn
+User=donalo
+PIDFile=/var/www/donalo/shared/tmp/pids/unicorn.pid
+WorkingDirectory=/var/www/donalo/current
+EnvironmentFile=-/etc/default/donalo
+
+ExecStart=/home/donalo/.rbenv/bin/rbenv exec bundle exec /var/www/donalo/current/bin/unicorn_rails -c /var/www/donalo/current/config/unicorn.rb
+ExecReload=/bin/kill -s USR2 $MAINPID
+ExecStop=/bin/kill -s QUIT $MAINPID
+
+[Install]
+WantedBy=multi-user.target

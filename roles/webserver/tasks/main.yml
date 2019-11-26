@@ -1,4 +1,10 @@
 ---
+- name: Create systemd unit for Unicorn
+  template:
+    src: unicorn.service.j2
+    dest: /etc/systemd/system/donalo.service
+    mode: 0644
+
 - include_role:
     name: vendor/jdauphant.nginx
   vars:
