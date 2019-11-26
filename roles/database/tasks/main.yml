@@ -1,0 +1,12 @@
+---
+- include_role:
+    name: vendor/geerlingguy.mysql
+  vars:
+    mysql_databases:
+      - name: "{{ database_name }}"
+        encoding: latin1
+        collation: latin1_spanish_ci
+    mysql_users:
+      - name: "{{ database_user }}"
+        priv: "{{ database_name }}.*:ALL"
+        password: "{{ database_password }}"
