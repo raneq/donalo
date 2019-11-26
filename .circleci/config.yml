@@ -40,6 +40,10 @@ jobs:
             - v2-python-deps-{{ checksum "requirements.txt" }}
             - v2-python-deps-
       - run: pip3 install -r requirements.txt --user
+      - save_cache:
+          key: v2-python-deps-{{ checksum "requirements.txt" }}
+          paths:
+            - "/usr/local/lib/python3.7/site-packages"
       - run: ansible-galaxy install -r requirements.yml
       - run: echo $VAULT_PASS > .vault_pass
       - add_ssh_keys:
