@@ -7,13 +7,13 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-python-deps-{{ checksum "requirements.txt" }}
-            - v1-python-deps-
+            - v2-python-deps-{{ checksum "requirements.txt" }}
+            - v2-python-deps-
       - run:
           name: Install dependencies
           command: pip3 install -r requirements.txt --user
       - save_cache:
-          key: v1-python-deps-{{ checksum "requirements.txt" }}
+          key: v2-python-deps-{{ checksum "requirements.txt" }}
           paths:
             - "/usr/local/lib/python3.7/site-packages"
       - run:
@@ -31,8 +31,8 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - v1-python-deps-{{ checksum "requirements.txt" }}
-            - v1-python-deps-
+            - v2-python-deps-{{ checksum "requirements.txt" }}
+            - v2-python-deps-
       - run: pip3 install -r requirements.txt --user
       - run: ansible-galaxy install -r requirements.yml
       - run: echo $VAULT_PASS > .vault_pass
