@@ -5,7 +5,9 @@
     - role: vendor/geerlingguy.security
       vars:
         security_autoupdate_enabled: true
-    - role: webserver
-      tags: webserver
     - role: common
       tags: common
+    - role: webserver
+      tags: webserver
+    - role: background_jobs
+      tags: background_jobs

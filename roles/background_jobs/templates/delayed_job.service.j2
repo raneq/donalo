@@ -1,0 +1,16 @@
+[Unit]
+Description=Donalo Delayed Job
+
+[Service]
+Type=forking
+PIDFile=/var/www/shared/tmp/pids/delayed_job.pid
+RemainAfterExit=no
+Restart=on-failure
+RestartSec=60s
+User=donalo
+SyslogIdentifier=donalo-delayed_job
+ExecStart=/bin/bash -c "/var/www/donalo/current/bin/delayed_job start --pid-dir=/var/www/shared/tmp/pids/"
+ExecStop=/bin/bash -c "/var/www/donalo/current/bin/delayed_job stop --pid-dir=/var/www/shared/tmp/pids/"
+
+[Install]
+WantedBy=multi-user.target
