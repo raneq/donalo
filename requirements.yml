@@ -6,3 +6,5 @@
   version: v2.21.2
 - src: coopdevs.certbot_nginx
   version: 0.0.4
+- src: geerlingguy.mysql
+  version: 2.9.5

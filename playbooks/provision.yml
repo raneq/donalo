@@ -11,3 +11,5 @@
       tags: webserver
     - role: background_jobs
       tags: background_jobs
+    - role: database
+      tags: database
