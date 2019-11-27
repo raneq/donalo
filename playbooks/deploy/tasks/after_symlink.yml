@@ -1,0 +1,11 @@
+- name: install Ruby depedencies
+  command: "bundle install \
+    --gemfile {{ ansistrano_current_dir }}/Gemfile
+    --without development test
+    --deployment
+    --quiet"
+
+- name: reload unicorn
+  service:
+    name: donalo
+    state: reloaded
