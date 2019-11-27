@@ -6,6 +6,16 @@
     --deployment
     --quiet"
 
+- name: migrate database
+  shell: bash -lc "bundle exec rake db:migrate"
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+
+- name: precompile assets
+  shell: bash -lc "bundle exec rake assets:precompile"
+  args:
+    chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+
 - name: reload unicorn
   service:
     name: donalo
