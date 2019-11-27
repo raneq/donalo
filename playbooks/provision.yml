@@ -26,3 +26,4 @@
           - version: 2.6.2
       rbenv_users:
         - donalo
+      default_gems_file: files/default-gems
