@@ -2,6 +2,7 @@
   command: "bundle install \
     --gemfile {{ ansistrano_current_dir }}/Gemfile
     --without development test
+    --jobs 2
     --deployment
     --quiet"
 
