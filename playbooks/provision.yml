@@ -17,3 +17,12 @@
       tags: cacheserver
     - role: searchserver
       tags: searchserver
+    - role: vendor/zzet.rbenv
+      rbenv:
+        env: user
+        version: v1.1.2
+        default_ruby: 2.6.2
+        rubies:
+          - version: 2.6.2
+      rbenv_users:
+        - donalo
