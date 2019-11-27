@@ -1,11 +1,13 @@
 ---
 - name: install Ruby depedencies
-  command: "bundle install \
-    --gemfile {{ ansistrano_current_dir }}/Gemfile
+  shell: bash -lc "bundle install
+    --gemfile {{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}/Gemfile
     --without development test
     --jobs 2
     --deployment
     --quiet"
+  become: yes
+  become_user: "{{ app_user }}"
 
 - name: migrate database
   shell: bash -lc "bundle exec rake db:migrate"
