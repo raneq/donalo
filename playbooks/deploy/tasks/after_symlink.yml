@@ -19,6 +19,11 @@
   args:
     chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
 
+- name: restart delayed job
+  service:
+    name: delayed_job
+    state: restarted
+
 - name: reload unicorn
   service:
     name: donalo
