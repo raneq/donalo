@@ -12,4 +12,5 @@
           - log
           - public/system
           - vendor/bundle
+        # yamllint disable-line rule:line-length
         ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/deploy/tasks/after_symlink.yml"
