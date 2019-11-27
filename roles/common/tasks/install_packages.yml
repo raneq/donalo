@@ -7,7 +7,8 @@
       'git',
       'apt-transport-https',
       'curl',
-      'wget'
+      'wget',
+      'libmysqlclient-dev'
     ]
     state: present
     force: true
