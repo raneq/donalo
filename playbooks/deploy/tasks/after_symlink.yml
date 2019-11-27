@@ -1,3 +1,4 @@
+---
 - name: install Ruby depedencies
   command: "bundle install \
     --gemfile {{ ansistrano_current_dir }}/Gemfile
