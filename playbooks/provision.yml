@@ -15,3 +15,5 @@
       tags: database
     - role: cacheserver
       tags: cacheserver
+    - role: searchserver
+      tags: searchserver
