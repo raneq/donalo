@@ -1,3 +1,7 @@
 {% if rails_environment is defined %}
 RAILS_ENV={{ rails_environment }}
 {% endif %}
+
+DATABASE_NAME={{ database_name }}
+DATABASE_USER={{ database_user }}
+DATABASE_PASSWORD={{ database_password }}
