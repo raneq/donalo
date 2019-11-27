@@ -10,8 +10,5 @@
         ansistrano_git_branch: master
         ansistrano_shared_paths:
           - log
-          - tmp/pids
-          - tmp/sockets
-          - tmp/cache
           - public/system
           - vendor/bundle
