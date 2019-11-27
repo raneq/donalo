@@ -10,3 +10,6 @@
   version: 2.9.5
 - src: davidwittman.redis
   version: 1.2.7
+- src: https://github.com/coopdevs/sphinx
+  version: replace-iteritems-method
+  name: devjatkin.sphinx
