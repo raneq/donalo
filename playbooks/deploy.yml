@@ -1,6 +1,7 @@
 ---
 - hosts: donalo
   become: yes
+  become_user: "{{ app_user }}"
   roles:
     - role: vendor/ansistrano.deploy
       vars:

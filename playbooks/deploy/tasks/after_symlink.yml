@@ -6,8 +6,6 @@
     --jobs 2
     --deployment
     --quiet"
-  become: yes
-  become_user: "{{ app_user }}"
 
 - name: migrate database
   shell: bash -lc "bundle exec rake db:migrate"
