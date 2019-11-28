@@ -27,3 +27,9 @@
       rbenv_users:
         - donalo
       default_gems_file: files/default-gems
+    - role: vendor/stephdewit.nvm
+      nvm_version: 0.33.11
+      nvm_node_version: 10.15.3
+      become: yes
+      become_user: "{{ app_user }}"
+      tags: nvm

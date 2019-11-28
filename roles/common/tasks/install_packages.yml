@@ -13,7 +13,3 @@
     state: present
     force: true
     update_cache: true
-
-- name: Install NodeJS (for compiling JavaScript assets)
-  apt:
-    name: nodejs
