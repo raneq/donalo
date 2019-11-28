@@ -10,7 +10,7 @@
   vars:
     nginx_configs:
       upstream:
-        - upstream app_server { server unix:{{ unicorn_socket }} fail_timeout=0; }
+        - upstream app_server { server localhost:8080 fail_timeout=0; }
     nginx_remove_sites:
       - donalo_https
     nginx_sites:
