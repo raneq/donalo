@@ -5,11 +5,11 @@ Description=Donalo Unicorn app server
 Type=simple
 SyslogIdentifier=donalo-unicorn
 User=donalo
-PIDFile=/var/www/donalo/shared/tmp/pids/unicorn.pid
-WorkingDirectory=/var/www/donalo/current
+PIDFile={{ shared_path }}/pids/unicorn.pid
+WorkingDirectory={{ current_path }}
 EnvironmentFile=-/etc/default/donalo
 
-ExecStart=/home/donalo/.rbenv/bin/rbenv exec bundle exec /var/www/donalo/current/bin/unicorn_rails -c /var/www/donalo/current/config/unicorn.rb
+ExecStart=bundle exec unicorn -c {{ current_path }}/config/unicorn.rb -E {{ rails_environment }}
 ExecReload=/bin/kill -s USR2 $MAINPID
 ExecStop=/bin/kill -s QUIT $MAINPID
 
