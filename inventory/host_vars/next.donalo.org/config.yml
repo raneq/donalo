@@ -1,4 +1,6 @@
 ---
+rails_environment: staging
+
 sys_admins:
   - name: enrico
     ssh_key: "../pub_keys/enrico.pub"
