@@ -1,21 +1,26 @@
 ---
 - name: install Ruby depedencies
   shell: bash -lc "bundle install
-    --gemfile {{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}/Gemfile
+    --gemfile {{ current_path }}/Gemfile
     --without development test
     --jobs 2
     --deployment
     --quiet"
 
+- name: install JS dependencies
+  shell: bash -lc "npm install"
+  args:
+    chdir: "{{ current_path }}"
+
 - name: migrate database
   shell: bash -lc "bundle exec rake db:migrate"
   args:
-    chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+    chdir: "{{ current_path }}"
 
 - name: precompile assets
   shell: bash -lc "bundle exec rake assets:precompile"
   args:
-    chdir: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+    chdir: "{{ current_path }}"
 
 - name: restart delayed job
   service:

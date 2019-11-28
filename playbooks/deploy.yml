@@ -2,6 +2,8 @@
 - hosts: donalo
   become: yes
   become_user: "{{ app_user }}"
+  vars:
+    current_path: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
   roles:
     - role: vendor/ansistrano.deploy
       vars:
