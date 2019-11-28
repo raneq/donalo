@@ -15,3 +15,5 @@
   version: 3.3.0
 - src: zzet.rbenv
   version: 3.4.7
+- src: stephdewit.nvm
+  version: v3.2.0
