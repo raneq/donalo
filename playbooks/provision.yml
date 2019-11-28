@@ -5,6 +5,9 @@
     - role: vendor/geerlingguy.security
       vars:
         security_autoupdate_enabled: true
+        deploy_to: /var/www/donalo
+        shared_path: "{{ deploy_to }}/shared"
+        current_path: "{{ deploy_to }}/current"
     - role: common
       tags: common
     - role: webserver
