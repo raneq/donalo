@@ -1,0 +1,8 @@
+---
+- name: Create /var/www/donalo directory
+  file:
+    path: /var/www/donalo
+    owner: "{{ app_user }}"
+    group: "{{ app_user }}"
+    mode: 02775
+    state: directory
