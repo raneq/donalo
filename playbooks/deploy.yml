@@ -15,6 +15,7 @@
         ansistrano_shared_paths:
           - log
           - public/system
+          - public/assets
           - vendor/bundle
           - .bundle
         # yamllint disable-line rule:line-length
