@@ -15,7 +15,6 @@
         ansistrano_shared_paths:
           - log
           - pids
-          - sockets
           - public/system
           - public/assets
           - vendor/bundle

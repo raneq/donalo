@@ -3,10 +3,6 @@ ansible_python_interpreter: /usr/bin/python3
 
 app_user: "donalo"
 
-# This path is temporal and will make use of `ansistrano_deploy_to` and
-# `shared_path` once we adopt Ansistrano for deployments
-unicorn_socket: "/var/www/donalo/shared/sockets/unicorn.donalo.sock"
-
 ruby_version: "{{ lookup('file', '../.ruby-version') }}"
 
 hetzner_api_token: !vault |
