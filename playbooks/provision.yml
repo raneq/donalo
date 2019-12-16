@@ -28,7 +28,7 @@
         rubies:
           - version: 2.6.2
       rbenv_users:
-        - donalo
+        - "{{ app_user }}"
       default_gems_file: files/default-gems
     - role: vendor/stephdewit.nvm
       nvm_version: 0.33.11

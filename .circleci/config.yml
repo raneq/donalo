@@ -8,10 +8,6 @@ jobs:
       - run:
           name: Install dependencies
           command: pip3 install -r requirements.txt --user
-      - save_cache:
-          key: v1-python-deps-{{ checksum "requirements.txt" }}
-          paths:
-            - "/usr/local/lib/python3.7/site-packages"
       - run:
           name: Ansible-lint playbooks
           command: ansible-lint playbooks/*.yml
@@ -39,11 +35,31 @@ jobs:
           ansible-playbook playbooks/provision.yml \
             --vault-password-file=.vault_pass \
             --limit=next
+  deploy:
+    environment:
+      ANSIBLE_HOST_KEY_CHECKING: False
+    docker:
+      - image: circleci/python:3.7.4-stretch
+    steps:
+      - checkout
+      - run: pip3 install -r requirements.txt --user
+      - run: ansible-galaxy install -r requirements.yml
+      - run: echo $VAULT_PASS > .vault_pass
+      - add_ssh_keys:
+          fingerprints:
+            - "7c:e2:8e:8a:07:8e:d6:f9:19:cd:59:2c:40:d6:aa:fa"
+      - run: |
+          ansible-playbook playbooks/deploy.yml \
+            --vault-password-file=.vault_pass \
+            --limit=next
 workflows:
   version: 2
-  build_and_provision:
+  build_provision_and_deploy:
     jobs:
       - build
       - provision:
+          requires:
+            - build
+      - deploy:
           requires:
             - build

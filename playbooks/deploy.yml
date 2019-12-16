@@ -1,0 +1,24 @@
+---
+- hosts: donalo
+  become: yes
+  become_user: "{{ app_user }}"
+  vars:
+    current_path: "{{ ansistrano_deploy_to }}/{{ ansistrano_current_dir }}"
+  roles:
+    - role: vendor/ansistrano.deploy
+      vars:
+        ansistrano_deploy_to: /var/www/donalo
+        ansistrano_deploy_via: git
+        ansistrano_git_repo: https://github.com/coopdevs/sharetribe.git
+        ansistrano_git_branch: setup-unicorn
+        ansistrano_keep_releases: 5
+        ansistrano_shared_paths:
+          - log
+          - pids
+          - sockets
+          - public/system
+          - public/assets
+          - vendor/bundle
+          - .bundle
+        # yamllint disable-line rule:line-length
+        ansistrano_after_symlink_tasks_file: "{{ playbook_dir }}/deploy/tasks/after_symlink.yml"
