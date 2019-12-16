@@ -2,3 +2,7 @@
 {{ app_user }} ALL=(ALL) NOPASSWD: /bin/systemctl stop donalo
 {{ app_user }} ALL=(ALL) NOPASSWD: /bin/systemctl restart donalo
 {{ app_user }} ALL=(ALL) NOPASSWD: /bin/systemctl reload donalo
+{{ app_user }} ALL=(ALL) NOPASSWD: /bin/systemctl start delayed_job
+{{ app_user }} ALL=(ALL) NOPASSWD: /bin/systemctl stop delayed_job
+{{ app_user }} ALL=(ALL) NOPASSWD: /bin/systemctl restart delayed_job
+{{ app_user }} ALL=(ALL) NOPASSWD: /bin/systemctl reload delayed_job
