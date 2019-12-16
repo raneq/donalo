@@ -26,7 +26,6 @@
   service:
     name: delayed_job
     state: restarted
-    daemon_reload: yes
 
 - name: reload unicorn
   service:
