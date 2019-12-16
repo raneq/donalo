@@ -9,8 +9,8 @@ Restart=on-failure
 RestartSec=60s
 User=donalo
 SyslogIdentifier=donalo-delayed_job
-ExecStart=/bin/bash -c "{{ current_path }}/script/delayed_job start --pid-dir={{ pids_path }}"
-ExecStop=/bin/bash -c "{{ current_path }}/script/delayed_job stop --pid-dir={{ pids_path }}"
+ExecStart=/bin/bash -lc "{{ current_path }}/script/delayed_job start --pid-dir={{ pids_path }}"
+ExecStop=/bin/bash -lc "{{ current_path }}/script/delayed_job stop --pid-dir={{ pids_path }}"
 
 [Install]
 WantedBy=multi-user.target
