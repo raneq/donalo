@@ -5,10 +5,6 @@ jobs:
       - image: circleci/python:3.7.4-stretch
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-python-deps-{{ checksum "requirements.txt" }}
-            - v1-python-deps-
       - run:
           name: Install dependencies
           command: pip3 install -r requirements.txt --user
@@ -29,10 +25,6 @@ jobs:
       - image: circleci/python:3.7.4-stretch
     steps:
       - checkout
-      - restore_cache:
-          keys:
-            - v1-python-deps-{{ checksum "requirements.txt" }}
-            - v1-python-deps-
       - run: pip3 install -r requirements.txt --user
       - run: ansible-galaxy install -r requirements.yml
       - run: echo $VAULT_PASS > .vault_pass
