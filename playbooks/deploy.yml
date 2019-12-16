@@ -7,7 +7,7 @@
   roles:
     - role: vendor/ansistrano.deploy
       vars:
-        ansistrano_deploy_to: /var/www/donalo
+        ansistrano_deploy_to: "{{ deploy_to }}"
         ansistrano_deploy_via: git
         ansistrano_git_repo: https://github.com/coopdevs/sharetribe.git
         ansistrano_git_branch: setup-unicorn
