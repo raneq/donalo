@@ -26,6 +26,8 @@
   service:
     name: delayed_job
     state: restarted
+  become: yes
+  become_user: root
 
 - name: reload unicorn
   service:
