@@ -8,10 +8,14 @@ DATABASE_PASSWORD={{ database_password }}
 
 SECRET_KEY_BASE={{ secret_key_base }}
 
-SMTP_EMAIL={{ smtp_email }}
-SMTP_USERNAME={{ smtp_username }}
-SMTP_PASSWORD={{ smtp_password }}
-SMTP_DOMAIN={{ smtp_domain }}
+{% if smtp_email is defined %}
+mail_delivery_method="smtp"
+{% endif %}
+smtp_email_address={{ smtp_email }}
+smtp_email_user_name={{ smtp_username }}
+smtp_email_password={{ smtp_password }}
+smtp_email_domain={{ smtp_domain }}
+smtp_email_port=587
 
 redis_host=localhost
 redis_port=6379
