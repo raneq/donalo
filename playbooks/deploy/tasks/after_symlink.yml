@@ -33,3 +33,5 @@
   service:
     name: donalo
     state: reloaded
+  become: yes
+  become_user: root
