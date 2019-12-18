@@ -11,10 +11,10 @@ SECRET_KEY_BASE={{ secret_key_base }}
 {% if smtp_email is defined %}
 mail_delivery_method="smtp"
 {% endif %}
-smtp_email_address={{ smtp_email }}
+smtp_email_address={{ smtp_domain }}
 smtp_email_user_name={{ smtp_username }}
 smtp_email_password={{ smtp_password }}
-smtp_email_domain={{ smtp_domain }}
+smtp_email_domain={{ inventory_hostname }}
 smtp_email_port=25
 
 redis_host=localhost
