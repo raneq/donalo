@@ -59,3 +59,4 @@ smtp_password: !vault |
           3939346634356630660a343739343530666138613937636435333064383631656436396633373939
           3230
 smtp_domain: mail.nexica.com
+smtp_auth: login
